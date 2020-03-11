@@ -36,7 +36,8 @@ Here are some of the CRDs that come with Tekton:
 
 The following image will give some clarity on how the above pieces fit together:
 
+![](https://github.com/dewan-ahmed/Tekton101/blob/master/assets/tekton-blocks.png)
 
-
+Pipeline runs with the privileges of the specified service account. All pods execute a tekton in-built credential initialization step as their first step in each Task. ServiceAccount is patched with Secrets containing the necessary credentials. Tekton currently supports two Kubernetes Secret types: basic-auth and ssh-auth.
 
 
