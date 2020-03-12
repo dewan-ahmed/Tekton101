@@ -40,4 +40,4 @@ The following image will give some clarity on how the above pieces fit together:
 
 Pipeline runs with the privileges of the specified service account. All pods execute a tekton in-built credential initialization step as their first step in each Task. ServiceAccount is patched with Secrets containing the necessary credentials. Tekton currently supports two Kubernetes Secret types: basic-auth and ssh-auth.
 
-
+In the [next part](https://github.com/dewan-ahmed/Tekton101/blob/master/2%20-%20Why%20going%20Kubernetes-native%20for%20CICD.md) of this series, you'll learn the benefits of Kubernetes-native CI/CD over traditional ones.
