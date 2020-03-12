@@ -1,4 +1,4 @@
-This is a continuation of a series on Kubernetes-native CI/CD server. To read the first part of the series, visit [An overview of Tekton Pipelines](../1%20-%20An%20overview%20of%20Tekton%20Pipelines.md).
+This is a continuation of a series on Kubernetes-native CI/CD server. To read the first part of the series, visit [An overview of Tekton Pipelines](https://github.com/dewan-ahmed/Tekton101/blob/master/1%20-%20An%20overview%20of%20Tekton%20Pipelines.md).
 
 ![](https://github.com/dewan-ahmed/Tekton101/blob/master/assets/too%20many%20tools.png)
 
@@ -14,6 +14,10 @@ The following table summarizes the challenges around a traditional CI/CD server 
 | Self-healing is not possible (retry logic for some tools)|  Self-healing comes by default –resources are pods|
 | Most common CI/CD servers are from a pre-container era| Developed for containers and Kubernetes; runs as containers on Kubernetes|
 
-Let's discuss the above points in deoth. For sake of examples, I'll use Jenkins as a traditional CI/CD server and OpenShift Pipelines as the Kubernetes-native one (that uses Tekton under the hood). For 
-1. Logging/Monitoring:
+Let's discuss the above points in depth. For ease of reference, I'll use Jenkins as a traditional CI/CD server example and OpenShift Pipelines as the Kubernetes-native one (that uses Tekton under the hood).
+
+1. Logging/Monitoring: In order to view your Jenkins logs, you'd need to access Jenkins server. Although an integration can be made to fetch these logs, this adds overhead, nevertheless. This also means that you'd have someone in your team as the "Jenkins Expert" who understands these logs and can take decisions on it. For OpneShift Pipelines, the resources are pods running in containers. All of these logs are shown on the OpenShift Console:
+
+![](https://github.com/dewan-ahmed/Tekton101/blob/master/assets/openshift%20pipelines%20logs.png)
+
 
