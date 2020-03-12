@@ -24,6 +24,6 @@ Let's discuss the above points in depth. For ease of reference, I'll use Jenkins
 
 3. **Self-healing**: While Jenkins can implement _retry_ logic for its failed stages, it is limited to scope and number. Kubernetes (OpenShift, in this case), as a software, has self-healing baked in. This means all the resources run as pods and if one goes down, the platform automatically brings another up to continue the task. 
 
-4. **Pre-container**: Although Jenkins uses a number of plugins to provide cloud-native capabilities, the fact that you need a [plug-in to build for a Docker environment](https://wiki.jenkins-ci.org/display/JENKINS/Docker+build+step+plugin) — which is a pretty common use case these days — you need a plugin 
+4. **Pre-container**: Although Jenkins uses a number of plugins to provide cloud-native capabilities, the fact that you need a [plug-in to build for a Docker environment](https://wiki.jenkins-ci.org/display/JENKINS/Docker+build+step+plugin) is problematic. This is because traditional CI/CD servers like Jenkins is pre-container era and the design is a monolith which does not play well with Kubernetes platform. On the contrary, OpenShift Pipelines, Jenkins X etc are developed for Kubernetes and they run on Kubernetes. 
 
-**Work-in-progress**
+Now that you understand the benefits of Kubernetes-native CI/CD server, you might want to try one yourself. [Try out this demo](https://github.com/dewan-ahmed/Tekton101/blob/master/3%20-%20Tekton%20CI%20Demo.md) to build a CI pipeline from GitHub to Docker image registry.
