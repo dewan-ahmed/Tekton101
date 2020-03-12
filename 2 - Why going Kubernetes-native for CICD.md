@@ -24,6 +24,6 @@ Let's discuss the above points in depth. For ease of reference, I'll use Jenkins
 
 3. **Self-healing**: While Jenkins can implement _retry_ logic for its failed stages, it is limited to scope and number. Kubernetes (OpenShift, in this case), as a software, has self-healing baked in. This means all the resources run as pods and if one goes down, the platform automatically brings another up to continue the task. 
 
-4. **Pre-container**: Although Jenkins uses a number of plugins to provide cloud-native capabilities, the fact that these plug-ins do not feel native is primarily since Jenkins was developed at a time when containers were not prevalent. 
+4. **Pre-container**: Although Jenkins uses a number of plugins to provide cloud-native capabilities, the fact that you need a [plug-in to build for a Docker environment](https://wiki.jenkins-ci.org/display/JENKINS/Docker+build+step+plugin) — which is a pretty common use case these days — you need a plugin 
 
 **Work-in-progress**
