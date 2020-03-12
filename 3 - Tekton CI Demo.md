@@ -11,8 +11,6 @@ This is a basic Tekton pipelines demo for building an image from github and push
 
 ![](https://github.com/dewan-ahmed/Tekton101/blob/master/assets/arch.png)
 
-![](https://github.com/dewan-ahmed/Tekton101/blob/master/assets/arch1.png)
-
 ## Step1 - Verifying required setup
 
 * `kubectl version --short` to ensure you're targeting a k8s cluster (and to check the version). If you don't see an output or if the command is not recognized, refer to [this link](https://cloud.ibm.com/docs/containers?topic=containers-cs_cli_install#kubectl).
