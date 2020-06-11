@@ -1,0 +1,9 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: docker-target
+spec:
+  type: image
+  params:
+    - name: url
+      value: index.docker.io/dewandemo/tektondemo
