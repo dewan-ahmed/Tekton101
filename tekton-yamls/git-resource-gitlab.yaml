@@ -8,4 +8,4 @@ spec:
     - name: revision
       value: master
     - name: url
-      value: https://gitlab.com/dewan_ahmed/go-tekton-openshift
+      value: https://gitlab.com/dewan_ahmed/go-tekton-openshift # If using GitLab, replace this with your GitLab repo url
