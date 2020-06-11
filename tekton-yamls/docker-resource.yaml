@@ -6,4 +6,4 @@ spec:
   type: image
   params:
     - name: url
-      value: index.docker.io/dewandemo/tektondemo
+      value: index.docker.io/dewandemo/tektondemo # Replace with your docker hub repo url
