@@ -8,4 +8,4 @@ spec:
     - name: revision
       value: master
     - name: url
-      value: https://github.com/dewandemo/simple-nodejs-app
+      value: https://github.com/dewandemo/simple-nodejs-app # If using your own repository, replace this value
