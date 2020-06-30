@@ -1,6 +1,6 @@
 Tekton supports source code to be built from GitLab. This short tutorial demonstrates a NodeJS application to be built from GitLab and the image to be pushed in Docker hub.
 
-## Prerequisites
+### Prerequisites
 
 * A Kubernetes cluster: Any Kubernetes cluster will do. To get a free cluster on IBM Cloud, [follow this link](https://www.ibm.com/cloud/kubernetes-service).
 * Installation of [Tekton CLI](https://github.com/tektoncd/cli) on your machine.
