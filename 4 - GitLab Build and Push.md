@@ -70,3 +70,84 @@ spec:
 ```
 
 Once you create these files, run `kubectl apply -f git-resource.yaml` and `kubectl apply -f docker-resource.yaml` to create the necessary PipelineResource.
+
+This step creates the Tekton CRD - Task. Kaniko is used as the build tool. Create a new file with following contents and save as _Task.yaml_.
+
+```
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: build-docker-image-from-git-source
+spec:
+  inputs:
+    resources:
+      - name: git-source
+        type: git
+    params:
+      - name: pathToDockerFile
+        type: string
+        description: The path to the dockerfile to build
+        default: /workspace/docker-source/Dockerfile
+      - name: pathToContext
+        type: string
+        description:
+          The build context used by Kaniko
+          (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
+        default: /workspace/docker-source
+  outputs:
+    resources:
+      - name: builtImage
+        type: image
+  steps:
+    - name: build-and-push
+      image: gcr.io/kaniko-project/executor:v0.15.0
+      # specifying DOCKER_CONFIG is required to allow kaniko to detect docker credential
+      env:
+        - name: "DOCKER_CONFIG"
+          value: "/tekton/home/.docker/"
+      command:
+        - /kaniko/executor
+      args:
+        - --dockerfile=$(inputs.params.pathToDockerFile)
+        - --destination=$(outputs.resources.builtImage.url)
+        - --context=$(inputs.params.pathToContext)
+```
+If you're using a different git source, observe *default: /workspace/docker-source* which might change. Run `kubectl apply -f Task.yaml` to create the _Task_. The Task is not running yet as a _TaskRun_ needs to "run" on the _Task_.
+
+## Step5 - Creating the TaskRun
+
+Create a new file with the following content and save as _TaskRun.yaml_:
+
+```
+apiVersion: tekton.dev/v1alpha1
+kind: TaskRun
+metadata:
+  name: build-docker-image-from-git-source-task-run
+spec:
+  serviceAccountName: tekton-sa
+  taskRef:
+    name: build-docker-image-from-git-source
+  inputs:
+    resources:
+      - name: git-source
+        resourceRef:
+          name: git-source
+    params:
+      - name: pathToDockerFile
+        value: Dockerfile
+      - name: pathToContext
+        value: /workspace/git-source
+  outputs:
+    resources:
+      - name: builtImage
+        resourceRef:
+          name: docker-target
+```
+
+Notice how the _TaskRun_ brings all the pieces together. Under _spec_, it refers to the _serviceaccount_ we created earlier, the _taskRef_ with name of the _Task_ and _git-source_ and _docker-target_ under _inputs_ and _outputs_.
+
+Run `kubectl apply -f TaskRun.yaml` to create the _TaskRun_.
+
+## Step6 - Logs and observation
+
+Run `tkn taskrun describe build-docker-image-from-git-source-task-run` to see the status of the _TaskRun_. You can also run `tkn taskrun logs build-docker-image-from-git-source-task-run` to watch the detailed logs. If the steps were successful, you should be able to see an image pushed to your docker hub repo shortly. Congratulations on finishing this lab on Tekton!
