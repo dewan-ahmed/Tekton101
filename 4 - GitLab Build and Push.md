@@ -38,7 +38,7 @@ secrets:
 
 Run `kubectl apply -f serviceaccount.yaml` to create the necessary service account.
 
-## Create pipeline resources
+### Create pipeline resources
 
 The followings are _PipelineResource_ files for git and docker. Copy the first block of code and save as _git-resource.yaml_ and the seconds block of code as _docker-resource.yaml_.
 
@@ -114,7 +114,7 @@ spec:
 ```
 If you're using a different git source, observe *default: /workspace/docker-source* which might change. Run `kubectl apply -f Task.yaml` to create the _Task_. The Task is not running yet as a _TaskRun_ needs to "run" on the _Task_.
 
-## Step5 - Creating the TaskRun
+### Create the TaskRun
 
 Create a new file with the following content and save as _TaskRun.yaml_:
 
@@ -148,6 +148,6 @@ Notice how the _TaskRun_ brings all the pieces together. Under _spec_, it refers
 
 Run `kubectl apply -f TaskRun.yaml` to create the _TaskRun_.
 
-## Step6 - Logs and observation
+### Logs and observation
 
-Run `tkn taskrun describe build-docker-image-from-git-source-task-run` to see the status of the _TaskRun_. You can also run `tkn taskrun logs build-docker-image-from-git-source-task-run` to watch the detailed logs. If the steps were successful, you should be able to see an image pushed to your docker hub repo shortly. Congratulations on finishing this lab on Tekton!
+Run `tkn taskrun describe build-docker-image-from-git-source-task-run` to see the status of the _TaskRun_. You can also run `tkn taskrun logs build-docker-image-from-git-source-task-run` to watch the detailed logs. If the steps were successful, you should be able to see an image pushed to your docker hub repo shortly. 
