@@ -198,7 +198,7 @@ While you have a Pipeline, you'll need a PipelineRun to actually build and deplo
 
 ```
 NAMESPACE='catapp'
-URL='https://github.com/ncskier/catapp.git' # Replace with your catapp repository url
+URL='https://gitlab.com/dewan_ahmed/catapp.git' # Replace with your catapp repository url
 REVISION='master'
 cat << EOF | oc apply -f -
  apiVersion: tekton.dev/v1beta1
