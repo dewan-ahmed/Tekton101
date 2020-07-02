@@ -246,3 +246,8 @@ oc get route catapp --template='http://{{.spec.host}}'
 ```
 
 ![](https://github.com/dewan-ahmed/Tekton101/blob/master/assets/catapp.png)
+
+
+#### Reference
+
+A superset of this tutorial was originally written by Brandon Walker and published [here](https://developer.ibm.com/tutorials/tekton-triggers-101/).
